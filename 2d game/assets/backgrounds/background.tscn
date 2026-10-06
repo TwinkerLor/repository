@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://pbo15k7l87ct"]
+
+[ext_resource type="Script" uid="uid://55818m21by7d" path="res://scripts/ui/main_menu.gd/background.gd" id="1_iia8d"]
+[ext_resource type="Texture2D" uid="uid://b55r8vttadmew" path="res://assets/backgrounds/1.Sky.png" id="1_lmc72"]
+[ext_resource type="Texture2D" uid="uid://bj3eldhrjxds7" path="res://assets/backgrounds/2.Clouds.png" id="2_iia8d"]
+[ext_resource type="Texture2D" uid="uid://chot013gcfmb2" path="res://assets/backgrounds/3.Mountains.png" id="3_l4rja"]
+[ext_resource type="Texture2D" uid="uid://b22faaxbc74po" path="res://assets/backgrounds/4.Dunes.png" id="4_mbpp3"]
+[ext_resource type="Texture2D" uid="uid://dvvua20r1rlon" path="res://assets/backgrounds/5.Ground.png" id="5_kpjiq"]
+
+[node name="background" type="ParallaxBackground" unique_id=1426929580]
+script = ExtResource("1_iia8d")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="." unique_id=977077945]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1153.04, 0)
+
+[node name="1_sky" type="Sprite2D" parent="ParallaxLayer" unique_id=1360021496]
+position = Vector2(578.5, 323)
+scale = Vector2(3.603125, 3.5888891)
+texture = ExtResource("1_lmc72")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="." unique_id=799229988]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1149.995, 0)
+
+[node name="2_clouds" type="Sprite2D" parent="ParallaxLayer2" unique_id=480686206]
+position = Vector2(579.99994, 325)
+scale = Vector2(3.59375, 3.5444446)
+texture = ExtResource("2_iia8d")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="." unique_id=1253718553]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1151.12, 0)
+
+[node name="3_mountains" type="Sprite2D" parent="ParallaxLayer3" unique_id=1331885208]
+position = Vector2(579.5, 324)
+scale = Vector2(3.596875, 3.5333335)
+texture = ExtResource("3_l4rja")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="." unique_id=1279277425]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1150.07, 0)
+
+[node name="4_dunes" type="Sprite2D" parent="ParallaxLayer4" unique_id=1002232645]
+position = Vector2(579, 327)
+scale = Vector2(3.5937498, 3.5555556)
+texture = ExtResource("4_mbpp3")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="." unique_id=1964223403]
+motion_mirroring = Vector2(1151.09, 0)
+
+[node name="5_ground" type="Sprite2D" parent="ParallaxLayer5" unique_id=1270344396]
+position = Vector2(578.5, 323.5)
+scale = Vector2(3.596875, 3.5722218)
+texture = ExtResource("5_kpjiq")

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bkm6cqcetsu17"]
+
+[ext_resource type="Script" uid="uid://dy7rxsm28llx0" path="res://scripts/quit.gd" id="1_06t4h"]
+[ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_7vrkn"]
+
+[node name="Menu" type="Node2D" unique_id=1496230609]
+
+[node name="play" type="Button" parent="." unique_id=537610629]
+offset_left = 197.0
+offset_top = 186.0
+offset_right = 982.0
+offset_bottom = 368.0
+theme_override_font_sizes/font_size = 48
+text = "PLAY"
+
+[node name="quit" type="Button" parent="." unique_id=515734965]
+offset_left = 199.0
+offset_top = 414.0
+offset_right = 982.0
+offset_bottom = 591.0
+theme_override_font_sizes/font_size = 48
+text = "QUIT"
+script = ExtResource("1_06t4h")
+
+[node name="Label" type="Label" parent="." unique_id=417892485]
+offset_left = 200.0
+offset_top = 9.0
+offset_right = 985.0
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 48
+text = "2d game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_7vrkn")]
+
+[connection signal="pressed" from="play" to="quit" method="_on_play_pressed"]
+[connection signal="pressed" from="quit" to="quit" method="_on_pressed"]
