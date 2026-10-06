@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
 [ext_resource type="PackedScene" uid="uid://bf54eks6am5aw" path="res://scripts/player.gd/character_body_2d.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_vonw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
+size = Vector2(1873, 122)
 
 [node name="level" type="Node2D" unique_id=1220729010]
-position = Vector2(3, 6)
+position = Vector2(-1, -7)
 
 [node name="player" parent="." unique_id=1318286272 instance=ExtResource("1_u52ul")]
-position = Vector2(82, 69)
+position = Vector2(71, 74)
+
+[node name="ground" type="StaticBody2D" parent="." unique_id=821114042]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1958037035]
+position = Vector2(939.5, 649)
+shape = SubResource("RectangleShape2D_6rljk")
+
+[node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_vonw3")]
