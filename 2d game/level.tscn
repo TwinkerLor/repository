@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
 [ext_resource type="PackedScene" uid="uid://bf54eks6am5aw" path="res://scripts/player.gd/character_body_2d.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://hb2w3wik2jlc" path="res://scripts/player.gd/player_2.tscn" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_vonw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
@@ -17,5 +18,8 @@ position = Vector2(71, 74)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1958037035]
 position = Vector2(939.5, 649)
 shape = SubResource("RectangleShape2D_6rljk")
+
+[node name="player2" parent="ground" unique_id=553240551 instance=ExtResource("2_oi3di")]
+position = Vector2(347, 76)
 
 [node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_vonw3")]
