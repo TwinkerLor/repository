@@ -17,8 +17,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	if not is_on_floor():
+	if Input.is_action_just_pressed("ui_attack"):
+		if is_on_floor():
+			sprite.play("attack")
+		else:
+			sprite.play("airAttack")
+	elif sprite.animation == "attack" and sprite.is_playing():
+		pass
+	elif sprite.animation == "airAttack" and sprite.is_playing():
+		pass
+	elif not is_on_floor():
 		sprite.play("jump")
 	elif direction != 0:
 		sprite.play("run")
