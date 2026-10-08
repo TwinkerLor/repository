@@ -22,3 +22,4 @@ shape = SubResource("RectangleShape2D_6rljk")
 position = Vector2(347, 76)
 
 [node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_vonw3")]
+script = null
