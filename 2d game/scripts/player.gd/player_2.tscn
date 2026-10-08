@@ -75,6 +75,16 @@ region = Rect2(1617, 0, 231, 190)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_in83j"]
 animations = [{
+"frames": [],
+"loop": 0,
+"name": &"airAttack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sje0x")
@@ -150,5 +160,5 @@ shape = SubResource("CapsuleShape2D_v0twj")
 position = Vector2(199.25, 117.50001)
 scale = Vector2(1.0194805, 1.1631579)
 sprite_frames = SubResource("SpriteFrames_in83j")
-animation = &"jump"
+animation = &"airAttack"
 autoplay = "jump"
