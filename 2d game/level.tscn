@@ -15,19 +15,14 @@ size = Vector2(1873, 122)
 
 [node name="level" type="Node2D" unique_id=1220729010]
 
-[node name="player" parent="." unique_id=1318286272 instance=ExtResource("1_u52ul")]
-position = Vector2(71, 74)
-
 [node name="ground" type="StaticBody2D" parent="." unique_id=821114042]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1958037035]
 position = Vector2(939.5, 649)
 shape = SubResource("RectangleShape2D_6rljk")
 
-[node name="player2" parent="ground" unique_id=553240551 instance=ExtResource("2_oi3di")]
-position = Vector2(347, 76)
-
 [node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_vonw3")]
+<<<<<<< HEAD
 
 [node name="TileMap" type="TileMap" parent="." unique_id=495149211]
 format = 2
@@ -64,3 +59,25 @@ texture = ExtResource("9_8b0r0")
 position = Vector2(920, 467.5)
 scale = Vector2(0.8316827, 0.84158427)
 texture = ExtResource("4_0b4ue")
+=======
+script = null
+
+[node name="Player" type="Node2D" parent="." unique_id=451830991]
+
+[node name="player2" parent="Player" unique_id=553240551 instance=ExtResource("2_oi3di")]
+position = Vector2(347, 76)
+
+[node name="player" parent="Player" unique_id=1318286272 instance=ExtResource("1_u52ul")]
+position = Vector2(71, 74)
+
+[node name="Enemy" type="Node2D" parent="." unique_id=329984529]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1936653740]
+
+[node name="HpBar" type="ProgressBar" parent="HUD" unique_id=1358524164]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 270.0
+offset_bottom = 47.0
+value = 100.0
+>>>>>>> a271e990d487bfc35effeb8be991fcf100d63acd

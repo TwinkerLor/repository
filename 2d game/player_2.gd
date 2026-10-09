@@ -2,9 +2,15 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var playerHp := 100
+const MAX_HP := 100
 var attack_cooldown := 0.0
 const ATTACK_COOLDOWN_TIME := 0.5
 @onready var sprite = $AnimatedSprite2D
+@onready var hp_bar = $"../../HUD/HpBar"
+
+func _process(delta):
+	hp_bar.value = playerHp
 
 func _physics_process(delta: float) -> void:
 	if attack_cooldown > 0:
