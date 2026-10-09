@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bs2fvhlgllimy" path="res://scripts/player.gd/Wizard Pack/Attack2.png" id="3_86v67"]
 [ext_resource type="Texture2D" uid="uid://d1x555kmgx6r7" path="res://scripts/player.gd/Wizard Pack/Jump.png" id="3_pf7pm"]
 [ext_resource type="Texture2D" uid="uid://wcuiyledw2lx" path="res://scripts/player.gd/Wizard Pack/Run.png" id="4_86v67"]
+[ext_resource type="Texture2D" uid="uid://djea582cx80s" path="res://scripts/player.gd/Wizard Pack/Fall.png" id="6_86v67"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0twj"]
 radius = 39.0
@@ -105,6 +106,14 @@ region = Rect2(0, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjmm1"]
 atlas = ExtResource("3_pf7pm")
+region = Rect2(231, 0, 231, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b14ub"]
+atlas = ExtResource("6_86v67")
+region = Rect2(0, 0, 231, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut12k"]
+atlas = ExtResource("6_86v67")
 region = Rect2(231, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1ipu"]
@@ -228,10 +237,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mjmm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b14ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut12k")
 }],
 "loop": 1,
 "name": &"jump",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -274,7 +289,7 @@ shape = SubResource("CapsuleShape2D_v0twj")
 position = Vector2(199.25, 117.50001)
 scale = Vector2(1.0194805, 1.1631579)
 sprite_frames = SubResource("SpriteFrames_in83j")
-animation = &"attack2"
+animation = &"jump"
 autoplay = "jump"
-frame = 7
-frame_progress = 1.0
+frame = 1
+frame_progress = 0.6619556

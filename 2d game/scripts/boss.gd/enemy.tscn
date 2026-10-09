@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://i44wfuxiptte"]
+
+[ext_resource type="Script" uid="uid://r4qk6x0xpv5u" path="res://scripts/enemy.gd" id="1_48uxq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in83j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbeq5"]
+radius = 39.0
+height = 108.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rljk"]
+radius = 182.58423
+
+[node name="Enemy" type="CharacterBody2D" unique_id=695546891]
+script = ExtResource("1_48uxq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1540001757]
+sprite_frames = SubResource("SpriteFrames_in83j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1806028777]
+position = Vector2(187, 118)
+shape = SubResource("CapsuleShape2D_hbeq5")
+
+[node name="Detector" type="Area2D" parent="." unique_id=407615879]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=484623582]
+position = Vector2(186, 119)
+shape = SubResource("CircleShape2D_6rljk")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
