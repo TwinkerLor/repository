@@ -3,12 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bf54eks6am5aw" path="res://scripts/player.gd/character_body_2d.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://hb2w3wik2jlc" path="res://scripts/player.gd/player_2.tscn" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_vonw3"]
-[ext_resource type="Texture2D" uid="uid://epf3efif5by8" path="res://assets/tiles/png/Objects/Crate.png" id="4_0b4ue"]
-[ext_resource type="Texture2D" uid="uid://b4b75n6ef5wo6" path="res://assets/tiles/png/Objects/Cactus (1).png" id="5_i2t4f"]
-[ext_resource type="Texture2D" uid="uid://cwux61up6ha83" path="res://assets/tiles/png/Objects/Sign.png" id="6_8cye3"]
-[ext_resource type="Texture2D" uid="uid://c777j5hvmaakh" path="res://assets/tiles/png/Objects/SignArrow.png" id="7_2orkt"]
-[ext_resource type="Texture2D" uid="uid://cfvyjd5xarla8" path="res://assets/tiles/png/Objects/Skeleton.png" id="8_aicyk"]
-[ext_resource type="Texture2D" uid="uid://bqkoveuoq8ug8" path="res://assets/tiles/png/Objects/Tree.png" id="9_8b0r0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
 size = Vector2(1873, 122)
@@ -22,44 +16,6 @@ position = Vector2(939.5, 649)
 shape = SubResource("RectangleShape2D_6rljk")
 
 [node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_vonw3")]
-<<<<<<< HEAD
-
-[node name="TileMap" type="TileMap" parent="." unique_id=495149211]
-format = 2
-
-[node name="Crate" type="Polygon2D" parent="." unique_id=1071899599]
-position = Vector2(918.99994, 548)
-scale = Vector2(0.7970295, 0.72772276)
-texture = ExtResource("4_0b4ue")
-polygon = PackedVector2Array(-50.5, -50.5, -50.5, 50.5, 50.5, 50.5, 50.5, -50.5)
-uv = PackedVector2Array(0, 0, 0, 101, 101, 101, 101, 0)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-
-[node name="Cactus(1)" type="Sprite2D" parent="." unique_id=518352157]
-position = Vector2(148, 536)
-texture = ExtResource("5_i2t4f")
-
-[node name="Sign" type="Sprite2D" parent="." unique_id=505263725]
-position = Vector2(255, 549)
-texture = ExtResource("6_8cye3")
-
-[node name="SignArrow" type="Sprite2D" parent="." unique_id=83064031]
-position = Vector2(1075, 549)
-texture = ExtResource("7_2orkt")
-
-[node name="Skeleton" type="Sprite2D" parent="." unique_id=466796335]
-position = Vector2(769, 571)
-texture = ExtResource("8_aicyk")
-
-[node name="Tree" type="Sprite2D" parent="." unique_id=197659299]
-position = Vector2(489, 464)
-texture = ExtResource("9_8b0r0")
-
-[node name="Crate2" type="Sprite2D" parent="." unique_id=266469836]
-position = Vector2(920, 467.5)
-scale = Vector2(0.8316827, 0.84158427)
-texture = ExtResource("4_0b4ue")
-=======
 script = null
 
 [node name="Player" type="Node2D" parent="." unique_id=451830991]
@@ -80,4 +36,3 @@ offset_top = 20.0
 offset_right = 270.0
 offset_bottom = 47.0
 value = 100.0
->>>>>>> a271e990d487bfc35effeb8be991fcf100d63acd
