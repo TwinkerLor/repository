@@ -363,7 +363,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -433,6 +433,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rljk"]
 radius = 178.07022
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsku7"]
+radius = 178.07022
+
 [node name="Enemy" type="CharacterBody2D" unique_id=695546891]
 script = ExtResource("1_48uxq")
 
@@ -444,14 +447,23 @@ shape = SubResource("CapsuleShape2D_hbeq5")
 position = Vector2(193.5, 112)
 scale = Vector2(1.3020833, 1.8749998)
 sprite_frames = SubResource("SpriteFrames_in83j")
-animation = &"idle"
+animation = &"attack2"
+autoplay = "idle"
 
 [node name="Detector" type="Area2D" parent="." unique_id=407615879]
+visible = false
 position = Vector2(-1.5258789e-05, -7.6293945e-06)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=484623582]
 position = Vector2(186, 119)
 shape = SubResource("CircleShape2D_6rljk")
+
+[node name="Death" type="Area2D" parent="." unique_id=499797524]
+position = Vector2(-1.5258789e-05, -7.6293945e-06)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=2137003476]
+position = Vector2(186, 119)
+shape = SubResource("CircleShape2D_tsku7")
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
