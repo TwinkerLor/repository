@@ -447,14 +447,14 @@ shape = SubResource("CapsuleShape2D_hbeq5")
 position = Vector2(193.5, 112)
 scale = Vector2(1.3020833, 1.8749998)
 sprite_frames = SubResource("SpriteFrames_in83j")
-animation = &"attack2"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="Detector" type="Area2D" parent="." unique_id=407615879]
-visible = false
 position = Vector2(-1.5258789e-05, -7.6293945e-06)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=484623582]
+visible = false
 position = Vector2(186, 119)
 shape = SubResource("CircleShape2D_6rljk")
 

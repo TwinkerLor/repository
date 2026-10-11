@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://hb2w3wik2jlc" path="res://scripts/player.gd/player_2.tscn" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://cwt1shnajqd44" path="res://scripts/enemy.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://8ljhlh65ue3q" path="res://scripts/boss.gd/yellow_enemy.tscn" id="5_f2txt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
 size = Vector2(1873, 122)
@@ -22,7 +23,7 @@ script = null
 [node name="Player" type="Node2D" parent="." unique_id=451830991]
 
 [node name="player2" parent="Player" unique_id=553240551 instance=ExtResource("2_oi3di")]
-position = Vector2(-290, 11)
+position = Vector2(-135, 67)
 
 [node name="player" parent="Player" unique_id=1318286272 instance=ExtResource("1_u52ul")]
 position = Vector2(71, 74)
@@ -40,3 +41,7 @@ value = 100.0
 position = Vector2(735, 105)
 
 [node name="Enemy" parent="Enemy2" unique_id=695546891 instance=ExtResource("4_0b4ue")]
+position = Vector2(88, 6)
+
+[node name="yellow_enemy" parent="Enemy2" unique_id=2058517249 instance=ExtResource("5_f2txt")]
+position = Vector2(-334, 13)
