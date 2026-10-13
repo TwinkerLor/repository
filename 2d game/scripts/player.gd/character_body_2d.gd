@@ -11,6 +11,9 @@ var is_dead := false
 @onready var sprite = $AnimatedSprite2D
 @onready var hp_bar = $"../../HUD/HpBar"
 
+func _ready():
+	add_to_group("player")
+
 func _process(delta):
 	hp_bar.value = playerHp
 

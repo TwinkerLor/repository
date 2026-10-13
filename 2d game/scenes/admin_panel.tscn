@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bktxxx1cc0ck8"]
+
+[ext_resource type="Script" uid="uid://vk8dt0pvriom" path="res://scripts/ui/admin_panel.gd" id="1_tvw0j"]
+
+[node name="AdminPanel" type="CanvasLayer" unique_id=1808218886]
+script = ExtResource("1_tvw0j")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=21591502]
+offset_left = 883.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 233.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1411933091]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1713617793]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Спавн белого скелета"
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer" unique_id=84754744]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Спавн жёлтого скелета"
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer" unique_id=274955947]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Хаос"
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1904855699]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Лечение"
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer" unique_id=469836812]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Убить всех"
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer" unique_id=367854292]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button6" to="." method="_on_button_6_pressed"]

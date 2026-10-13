@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://bkm6cqcetsu17"]
 
-[ext_resource type="Script" uid="uid://dy7rxsm28llx0" path="res://scripts/quit.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dy7rxsm28llx0" path="res://scripts/ui/main_menu.gd/quit.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dx1yji4pcoa6y" path="res://scripts/ui/main_menu.gd/main_menu.gd" id="1_glbon"]
 [ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://1bcx6lwcmhkk" path="res://scenes/main_menu.tscn/background_2.tscn" id="4_nlkkf"]
+[ext_resource type="PackedScene" uid="uid://bnutfncedsf3o" path="res://scenes/main_menu.tscn/background_3.tscn" id="5_qe12f"]
 
 [node name="Menu" type="Node2D" unique_id=1496230609]
+script = ExtResource("1_glbon")
 
 [node name="play" type="Button" parent="." unique_id=537610629]
 offset_left = 231.0
@@ -33,6 +37,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_7vrkn")]
+
+[node name="Background2" parent="." unique_id=672086937 instance=ExtResource("4_nlkkf")]
+visible = false
+
+[node name="Background3" parent="." unique_id=1376652710 instance=ExtResource("5_qe12f")]
+visible = false
+
+[node name="Timer" type="Timer" parent="." unique_id=405445662]
+wait_time = 30.0
+autostart = true
 
 [connection signal="pressed" from="play" to="quit" method="_on_play_pressed"]
 [connection signal="pressed" from="quit" to="quit" method="_on_pressed"]
