@@ -9,7 +9,7 @@ script = ExtResource("1_tvw0j")
 offset_left = 883.0
 offset_top = 2.0
 offset_right = 1152.0
-offset_bottom = 233.0
+offset_bottom = 373.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1411933091]
 layout_mode = 2
@@ -49,6 +49,27 @@ text = "Убить всех"
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
+text = "бессмертие"
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1074897243]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+text = "Замедление"
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1948779299]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+text = "Ускорение"
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer" unique_id=382476922]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+text = "Обычная скорость"
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2013246359]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+text = "Убить игрока"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
@@ -56,3 +77,7 @@ theme_override_font_sizes/font_size = 16
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button10" to="." method="_on_button_10_pressed"]

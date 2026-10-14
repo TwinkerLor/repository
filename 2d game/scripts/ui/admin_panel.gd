@@ -35,8 +35,31 @@ func _on_button_4_pressed() -> void:
 	if player:
 		player.playerHp = player.MAX_HP
 
-
 func _on_button_5_pressed() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
+	
+
+
+func _on_button_6_pressed() -> void:
+	for p in get_tree().get_nodes_in_group("player"):
+		p.god_mode = not p.god_mode
+
+
+func _on_button_7_pressed() -> void:
+	Engine.time_scale = 0.3
+
+
+func _on_button_8_pressed() -> void:
+	Engine.time_scale = 2.0
+
+
+func _on_button_9_pressed() -> void:
+	Engine.time_scale = 1.0
+
+
+func _on_button_10_pressed() -> void:
+	for p in get_tree().get_nodes_in_group("player"):
+		p.playerHp = 0
+		p.die()
 	

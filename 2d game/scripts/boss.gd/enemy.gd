@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var player = $"../../Player/player"
-@onready var player2 = $"../../Player/player2"
+@onready var player = get_node_or_null("/root/level/Player/player")
+@onready var player2 = get_node_or_null("/root/level/Player/player2")
 @onready var anim = $AnimatedSprite2D
 
 const SPEED = 100.0

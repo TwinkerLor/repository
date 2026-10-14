@@ -23,11 +23,11 @@ script = null
 
 [node name="Player" type="Node2D" parent="." unique_id=451830991]
 
-[node name="player2" parent="Player" unique_id=553240551 instance=ExtResource("2_oi3di")]
-position = Vector2(-135, 67)
-
 [node name="player" parent="Player" unique_id=1318286272 instance=ExtResource("1_u52ul")]
 position = Vector2(71, 74)
+
+[node name="player2" parent="Player" unique_id=553240551 instance=ExtResource("2_oi3di")]
+position = Vector2(-135, 67)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1936653740]
 

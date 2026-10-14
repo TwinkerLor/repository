@@ -8,6 +8,7 @@ var attack_cooldown := 0.0
 const ATTACK_COOLDOWN_TIME := 0.5
 var is_hurt := false
 var is_dead := false
+var god_mode := false
 @onready var sprite = $AnimatedSprite2D
 @onready var hp_bar = $"../../HUD/HpBar"
 
@@ -65,6 +66,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func take_damage(amount: int):
+	if god_mode:
+		return
 	if is_hurt or is_dead:
 		return
 	is_hurt = true

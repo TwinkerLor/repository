@@ -6,7 +6,7 @@ extends Node2D
 var current = 0
 
 func _ready() -> void:
-	for i in range (bgs.size()):
+	for i in range(bgs.size()):
 		bgs[i].visible = (i == 0)
 	timer.timeout.connect(_change_background)
 	

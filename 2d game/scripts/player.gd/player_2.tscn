@@ -80,35 +80,31 @@ region = Rect2(1617, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_muupp"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(0, 0, 202, 190)
+region = Rect2(0, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bdg8"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(202, 0, 202, 190)
+region = Rect2(231, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htmhp"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(404, 0, 202, 190)
+region = Rect2(462, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtke5"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(606, 0, 202, 190)
+region = Rect2(693, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dicq"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(808, 0, 202, 190)
+region = Rect2(924, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1euv"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(1010, 0, 202, 190)
+region = Rect2(1155, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yommf"]
 atlas = ExtResource("4_sje0x")
-region = Rect2(1212, 0, 202, 190)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_os106"]
-atlas = ExtResource("4_sje0x")
-region = Rect2(1414, 0, 202, 190)
+region = Rect2(1386, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6260y"]
 atlas = ExtResource("5_1626t")
@@ -279,13 +275,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yommf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_os106")
 }],
 "loop": 0,
 "name": &"death",
-"speed": 16.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -385,5 +378,7 @@ shape = SubResource("CapsuleShape2D_v0twj")
 position = Vector2(199.25, 117.50001)
 scale = Vector2(1.0194805, 1.1631579)
 sprite_frames = SubResource("SpriteFrames_in83j")
-animation = &"hurt"
+animation = &"death"
 autoplay = "jump"
+frame = 6
+frame_progress = 1.0
