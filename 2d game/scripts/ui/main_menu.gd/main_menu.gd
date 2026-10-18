@@ -14,3 +14,7 @@ func _change_background():
 	bgs[current].visible = false
 	current = (current + 1) % bgs.size()
 	bgs[current].visible = true
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.

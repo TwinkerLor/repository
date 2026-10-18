@@ -16,23 +16,28 @@ var is_dead := false
 var god_mode := false
 
 @onready var sprite = $AnimatedSprite2D
-@onready var hp_bar = $"../../HUD/HpBar"
+#@onready var hp_bar = %HpBar
 
 func _ready():
 	add_to_group("player")
+	#if not is_multiplayer_authority():
+		#hp_bar.hide()
+	if not multiplayer.is_server() and str(multiplayer.get_unique_id()) == name:
+		set_multiplayer_authority(multiplayer.get_unique_id())
 
 #func _process(delta):
-	#hp_bar.value = playerHp
-
+	#if is_multiplayer_authority():
+		#hp_bar.value = playerHp
+		
 func _physics_process(delta: float) -> void:
 	if attack_cooldown > 0:
 		attack_cooldown -= delta
 	if attack2_cooldown > 0:
 		attack2_cooldown -= delta
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
+	# 2. Состояния (работают для всех)
 	if is_hurt:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
@@ -43,36 +48,43 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	var direction = 0.0
+	if is_multiplayer_authority():
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		direction = Input.get_axis("ui_left", "ui_right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if Input.is_action_just_pressed("ui_attack") and attack_cooldown <= 0 and is_on_floor():
-		sprite.play("attack")
-		attack_cooldown = ATTACK_COOLDOWN_TIME
-		deal_damage(ATTACK_DAMAGE)
-	elif Input.is_action_just_pressed("ui_attack2") and attack2_cooldown <= 0:
-		sprite.play("attack2")
-		attack2_cooldown = ATTACK2_COOLDOWN_TIME
-		deal_damage(ATTACK2_DAMAGE)
-	elif sprite.animation == "attack" and sprite.is_playing():
+		if Input.is_action_just_pressed("ui_attack") and attack_cooldown <= 0 and is_on_floor():
+			sprite.play("attack")
+			attack_cooldown = ATTACK_COOLDOWN_TIME
+			deal_damage(ATTACK_DAMAGE)
+		elif Input.is_action_just_pressed("ui_attack2") and attack2_cooldown <= 0:
+			sprite.play("attack2")
+			attack2_cooldown = ATTACK2_COOLDOWN_TIME
+			deal_damage(ATTACK2_DAMAGE)
+
+	if sprite.animation == "attack" and sprite.is_playing():
 		pass
 	elif sprite.animation == "attack2" and sprite.is_playing():
 		pass
-	elif not is_on_floor():
+	elif not is_on_floor() and velocity.y != 0:
 		sprite.play("jump")
-	elif direction != 0:
+	elif abs(velocity.x) > 10:
 		sprite.play("run")
 	else:
 		sprite.play("idle")
 
-	if direction != 0:
-		sprite.flip_h = direction < 0
+	if abs(velocity.x) > 10:
+		sprite.flip_h = velocity.x < 0
+		
+	if is_multiplayer_authority():
+		if Engine.get_physics_frames() % 2 == 0:
+			sync_movement.rpc(global_position, velocity, sprite.flip_h)
 
 	move_and_slide()
 	
@@ -104,3 +116,17 @@ func deal_damage(amount: int):
 	for enemy in enemies:
 		if abs(enemy.global_position.x - global_position.x) < 100 and abs(enemy.global_position.y - global_position.y) < 80:
 			enemy.take_damage(amount)
+			
+@rpc("any_peer", "unreliable_ordered", "call_remote")
+func sync_movement(new_pos: Vector2, new_vel: Vector2, is_flipped: bool):
+	if not is_multiplayer_authority():
+		global_position = new_pos
+		velocity = new_vel
+		$AnimatedSprite2D.flip_h = is_flipped
+		
+		if abs(velocity.x) > 10:
+			$AnimatedSprite2D.play("run")
+		elif not is_on_floor():
+			$AnimatedSprite2D.play("jump")
+		else:
+			$AnimatedSprite2D.play("idle")

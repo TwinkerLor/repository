@@ -48,5 +48,13 @@ visible = false
 wait_time = 30.0
 autostart = true
 
+[node name="coop" type="Button" parent="." unique_id=1030830039]
+offset_left = 1031.0
+offset_top = 529.0
+offset_right = 1134.0
+offset_bottom = 599.0
+text = "COOP"
+
 [connection signal="pressed" from="play" to="quit" method="_on_play_pressed"]
 [connection signal="pressed" from="quit" to="quit" method="_on_pressed"]
+[connection signal="pressed" from="coop" to="quit" method="_on_coop_pressed"]
