@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="1_b83qr"]
 [ext_resource type="Script" uid="uid://b1pm4wvnhiclq" path="res://scripts/ui/main_menu.gd/coop_level.gd" id="1_co0fv"]
-[ext_resource type="PackedScene" uid="uid://cwt1shnajqd44" path="res://scripts/enemy.tscn" id="2_co0fv"]
-[ext_resource type="PackedScene" uid="uid://8ljhlh65ue3q" path="res://scripts/boss.gd/yellow_enemy.tscn" id="3_36t1y"]
 [ext_resource type="PackedScene" uid="uid://bktxxx1cc0ck8" path="res://scenes/admin_panel.tscn" id="4_owwfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
@@ -34,12 +32,6 @@ value = 100.0
 [node name="Enemy2" type="Node2D" parent="." unique_id=315689707]
 position = Vector2(735, 105)
 
-[node name="Enemy" parent="Enemy2" unique_id=695546891 instance=ExtResource("2_co0fv")]
-position = Vector2(88, 6)
-
-[node name="yellow_enemy" parent="Enemy2" unique_id=2058517249 instance=ExtResource("3_36t1y")]
-position = Vector2(-334, 13)
-
 [node name="AdminPanel" parent="." unique_id=1808218886 instance=ExtResource("4_owwfw")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1146834150]
@@ -47,3 +39,8 @@ _spawnable_scenes = PackedStringArray("uid://bf54eks6am5aw", "uid://hb2w3wik2jlc
 spawn_path = NodePath("../Players")
 
 [node name="Players" type="Node2D" parent="." unique_id=1659687217]
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="." unique_id=2045193760]
+_spawnable_scenes = PackedStringArray("uid://8ljhlh65ue3q", "uid://cwt1shnajqd44")
+spawn_path = NodePath("../Enemy2")
+spawn_limit = 10

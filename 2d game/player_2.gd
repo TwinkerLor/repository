@@ -88,6 +88,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+@rpc("any_peer", "call_local", "reliable")
 func take_damage(amount: int):
 	if god_mode:
 		return

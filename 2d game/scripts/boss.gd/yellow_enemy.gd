@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
-@onready var player = get_node_or_null("/root/level/Player/player")
-@onready var player2 = get_node_or_null("/root/level/Player/player2")
+@onready var player_old = get_node_or_null("/root/level/Player/player")
+@onready var player2_old = get_node_or_null("/root/level/Player/player2")
 @onready var anim = $AnimatedSprite2D
+
+var player = null
+var player2 = null
 
 const SPEED = 120.0
 const ATTACK_RANGE := 80.0
@@ -22,8 +25,27 @@ var attack2_cooldown := 0.0
 func _ready():
 	add_to_group("enemies")
 	anim.play("idle")
+	if not multiplayer.is_server():
+		set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
+	if not multiplayer.is_server():
+		return
+
+	player = player_old
+	player2 = player2_old
+	
+	if player == null or player2 == null:
+		var players = get_tree().get_nodes_in_group("player")
+		player = null
+		player2 = null
+		
+		for p in players:
+			if player == null:
+				player = p
+			elif player2 == null:
+				player2 = p
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -44,19 +66,22 @@ func _physics_process(delta: float) -> void:
 
 	if chase:
 		var target = player
-		if player2 and abs(player2.global_position.x - global_position.x) < abs(player.global_position.x - global_position.x):
+		if player2 and player and abs(player2.global_position.x - global_position.x) < abs(player.global_position.x - global_position.x):
 			target = player2
-		var distance = abs(target.global_position.x - global_position.x)
+		
+		if target != null:
+			var dist_x = abs(target.global_position.x - global_position.x)
+			var dist_y = abs(target.global_position.y - global_position.y)
 
-		if distance < ATTACK_RANGE and attack2_cooldown <= 0:
-			attack2(target)
-		elif distance < ATTACK_RANGE and attack_cooldown <= 0:
-			attack(target)
-		else:
-			var direction_x = sign(target.global_position.x - global_position.x)
-			velocity.x = direction_x * SPEED
-			anim.play("walk")
-			anim.flip_h = direction_x < 0
+			if dist_x < ATTACK_RANGE and dist_y < 80 and attack2_cooldown <= 0:
+				attack2(target)
+			elif dist_x < ATTACK_RANGE and dist_y < 80 and attack_cooldown <= 0:
+				attack(target)
+			else:
+				var direction_x = sign(target.global_position.x - global_position.x)
+				velocity.x = direction_x * SPEED
+				anim.play("walk")
+				anim.flip_h = direction_x < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		anim.play("idle")
@@ -71,7 +96,7 @@ func attack(target):
 	attack_cooldown = ATTACK_COOLDOWN_TIME
 	await get_tree().create_timer(1.0).timeout
 	if target and abs(target.global_position.x - global_position.x) < ATTACK_RANGE + 20:
-		target.take_damage(ATTACK_DAMAGE)
+		target.take_damage.rpc(ATTACK_DAMAGE)
 	is_attacking = false
 
 func attack2(target):
@@ -82,7 +107,7 @@ func attack2(target):
 	attack2_cooldown = ATTACK2_COOLDOWN_TIME
 	await get_tree().create_timer(1.0).timeout
 	if target and abs(target.global_position.x - global_position.x) < ATTACK_RANGE + 20:
-		target.take_damage(ATTACK2_DAMAGE)
+		target.take_damage.rpc(ATTACK2_DAMAGE)
 	is_attacking = false
 
 func take_damage(amount: int):
@@ -105,9 +130,9 @@ func die():
 	queue_free()
 
 func _on_detector_body_entered(body: Node2D) -> void:
-	if body.name == "player" or body.name == "player2":
+	if body.is_in_group("player"):
 		chase = true
 
 func _on_detector_body_exited(body: Node2D) -> void:
-	if body.name == "player" or body.name == "player2":
+	if body.is_in_group("player"):
 		chase = false

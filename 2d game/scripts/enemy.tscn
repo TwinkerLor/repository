@@ -436,6 +436,17 @@ radius = 178.07022
 [sub_resource type="CircleShape2D" id="CircleShape2D_tsku7"]
 radius = 178.07022
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tsku7"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Enemy" type="CharacterBody2D" unique_id=695546891]
 script = ExtResource("1_48uxq")
 
@@ -464,6 +475,9 @@ position = Vector2(-1.5258789e-05, -7.6293945e-06)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=2137003476]
 position = Vector2(186, 119)
 shape = SubResource("CircleShape2D_tsku7")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1607631401]
+replication_config = SubResource("SceneReplicationConfig_tsku7")
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

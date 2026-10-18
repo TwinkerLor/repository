@@ -11,11 +11,20 @@ func _input(event):
 		visible = not visible
 		
 func _spawn(scene):
+	if not multiplayer.is_server():
+		return 
+		
 	var player = get_tree().get_first_node_in_group("player")
 	if not player: return
+	
 	var enemy = scene.instantiate()
 	enemy.global_position = player.global_position + Vector2(200, 0)
-	get_tree().current_scene.add_child(enemy)
+	
+	var container = get_tree().current_scene.get_node_or_null("Enemy2")
+	if container:
+		container.add_child(enemy, true)
+	else:
+		print("ОШИБКА: Не найден узел Enemy2!")
 
 
 func _on_button_pressed() -> void:
@@ -31,11 +40,15 @@ func _on_button_3_pressed() -> void:
 
 
 func _on_button_4_pressed() -> void:
+	if not multiplayer.is_server():
+		return
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.playerHp = player.MAX_HP
 
 func _on_button_5_pressed() -> void:
+	if not multiplayer.is_server():
+		return
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
 	
@@ -59,6 +72,8 @@ func _on_button_9_pressed() -> void:
 
 
 func _on_button_10_pressed() -> void:
+	if not multiplayer.is_server():
+		return
 	for p in get_tree().get_nodes_in_group("player"):
 		p.playerHp = 0
 		p.die()
