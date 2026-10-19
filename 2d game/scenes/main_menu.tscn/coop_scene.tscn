@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://ux4e131ngq2x"]
 
 [ext_resource type="Script" uid="uid://bo1lu4gk4vx13" path="res://scripts/ui/main_menu.gd/coop_scene.gd" id="1_3ew88"]
+[ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_asy63"]
+[ext_resource type="PackedScene" uid="uid://1bcx6lwcmhkk" path="res://scenes/main_menu.tscn/background_2.tscn" id="3_1mapi"]
+[ext_resource type="PackedScene" uid="uid://bnutfncedsf3o" path="res://scenes/main_menu.tscn/background_3.tscn" id="4_g5v2y"]
 
 [node name="Coop_scene" type="Node2D" unique_id=418325365]
 script = ExtResource("1_3ew88")
@@ -27,5 +30,26 @@ offset_bottom = 478.0
 theme_override_font_sizes/font_size = 48
 text = "Join"
 
+[node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_asy63")]
+
+[node name="Background2" parent="." unique_id=672086937 instance=ExtResource("3_1mapi")]
+visible = false
+
+[node name="Background3" parent="." unique_id=1376652710 instance=ExtResource("4_g5v2y")]
+visible = false
+
+[node name="Timer" type="Timer" parent="." unique_id=760413659]
+wait_time = 30.0
+autostart = true
+
+[node name="Button" type="Button" parent="." unique_id=1143447602]
+offset_left = 22.0
+offset_top = 550.0
+offset_right = 150.0
+offset_bottom = 619.0
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
 [connection signal="pressed" from="createHostBtn" to="." method="_on_create_host_btn_pressed"]
 [connection signal="pressed" from="joinBtn" to="." method="_on_join_btn_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
