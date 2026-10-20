@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cwt1shnajqd44" path="res://scripts/enemy.tscn" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://8ljhlh65ue3q" path="res://scripts/boss.gd/yellow_enemy.tscn" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://bktxxx1cc0ck8" path="res://scenes/admin_panel.tscn" id="6_1ainy"]
+[ext_resource type="PackedScene" uid="uid://ceyqdjkwrwoah" path="res://scenes/pause_menu.tscn" id="7_n6hdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
 size = Vector2(1873, 122)
@@ -45,6 +46,8 @@ position = Vector2(735, 105)
 position = Vector2(88, 6)
 
 [node name="yellow_enemy" parent="Enemy2" unique_id=2058517249 instance=ExtResource("5_f2txt")]
-position = Vector2(-334, 13)
+position = Vector2(-377, -4)
 
 [node name="AdminPanel" parent="." unique_id=1808218886 instance=ExtResource("6_1ainy")]
+
+[node name="pauseMenu" parent="." unique_id=1737344857 instance=ExtResource("7_n6hdu")]

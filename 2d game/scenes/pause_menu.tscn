@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ceyqdjkwrwoah"]
+
+[ext_resource type="Script" uid="uid://bt34k2qbctsyy" path="res://scripts/ui/pause_menu.gd" id="1_n87rw"]
+
+[node name="pauseMenu" type="Control" unique_id=1737344857]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n87rw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1448066933]
+layout_mode = 0
+offset_left = 350.0
+offset_right = 800.0
+offset_bottom = 650.0
+color = Color(0, 0.007843138, 0, 0.4)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1800653984]
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 650.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=226516056]
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Button" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1387992829]
+custom_minimum_size = Vector2(450, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Continue"
+
+[node name="Button2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=935317650]
+custom_minimum_size = Vector2(450, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="Button3" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1049434084]
+custom_minimum_size = Vector2(450, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Main menu"
+
+[node name="Button4" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1419757006]
+custom_minimum_size = Vector2(450, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
