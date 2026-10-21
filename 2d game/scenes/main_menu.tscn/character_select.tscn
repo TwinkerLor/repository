@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://c80bjdh2gyrp2"]
+
+[ext_resource type="Script" uid="uid://dtoghbqcim1yk" path="res://scripts/ui/character_select.gd" id="1_wva8l"]
+[ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="2_peqyh"]
+[ext_resource type="PackedScene" uid="uid://1bcx6lwcmhkk" path="res://scenes/main_menu.tscn/background_2.tscn" id="3_p3r0h"]
+[ext_resource type="PackedScene" uid="uid://bnutfncedsf3o" path="res://scenes/main_menu.tscn/background_3.tscn" id="4_th2gq"]
+[ext_resource type="Texture2D" uid="uid://ccybu6o3808me" path="res://scripts/player.gd/Idle.png.png" id="5_jnlss"]
+[ext_resource type="Texture2D" uid="uid://c4d225ui5ap2e" path="res://scripts/player.gd/Wizard Pack/Idle.png" id="6_i0rv1"]
+
+[node name="characterSelect" type="Control" unique_id=1854188615]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wva8l")
+
+[node name="background" parent="." unique_id=1426929580 instance=ExtResource("2_peqyh")]
+
+[node name="Background2" parent="." unique_id=672086937 instance=ExtResource("3_p3r0h")]
+visible = false
+
+[node name="Background3" parent="." unique_id=1376652710 instance=ExtResource("4_th2gq")]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=334840712]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=756334856]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Select character"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1297455546]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1153.0
+offset_bottom = 651.0
+theme_override_constants/separation = 450
+
+[node name="knight" type="VBoxContainer" parent="HBoxContainer" unique_id=1397678587]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HBoxContainer/knight" unique_id=405730119]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Knight"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/knight" unique_id=11495222]
+position = Vector2(175, 324.75)
+scale = Vector2(2.7187498, 5.601562)
+texture = ExtResource("5_jnlss")
+hframes = 2
+vframes = 4
+
+[node name="Select" type="Button" parent="HBoxContainer/knight" unique_id=1669073349]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Select"
+
+[node name="wizard" type="VBoxContainer" parent="HBoxContainer" unique_id=391393341]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HBoxContainer/wizard" unique_id=1620121372]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Wizard"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/wizard" unique_id=590992297]
+position = Vector2(173.75, 396.5)
+scale = Vector2(1.512987, 2.6157894)
+texture = ExtResource("6_i0rv1")
+hframes = 6
+
+[node name="Select2" type="Button" parent="HBoxContainer/wizard" unique_id=1062337959]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Select"
+
+[node name="Button" type="Button" parent="." unique_id=1229108999]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 513.0
+offset_right = 681.0
+offset_bottom = 569.0
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Timer" type="Timer" parent="." unique_id=1343225255]
+wait_time = 30.0
+
+[connection signal="pressed" from="HBoxContainer/knight/Select" to="." method="_on_select_pressed"]
+[connection signal="pressed" from="HBoxContainer/wizard/Select2" to="." method="_on_select_2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

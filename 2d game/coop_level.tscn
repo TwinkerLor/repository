@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pbo15k7l87ct" path="res://assets/backgrounds/background.tscn" id="1_b83qr"]
 [ext_resource type="Script" uid="uid://b1pm4wvnhiclq" path="res://scripts/ui/main_menu.gd/coop_level.gd" id="1_co0fv"]
+[ext_resource type="PackedScene" uid="uid://ceyqdjkwrwoah" path="res://scenes/pause_menu.tscn" id="4_b83qr"]
 [ext_resource type="PackedScene" uid="uid://bktxxx1cc0ck8" path="res://scenes/admin_panel.tscn" id="4_owwfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rljk"]
@@ -44,3 +45,5 @@ spawn_path = NodePath("../Players")
 _spawnable_scenes = PackedStringArray("uid://8ljhlh65ue3q", "uid://cwt1shnajqd44")
 spawn_path = NodePath("../Enemy2")
 spawn_limit = 10
+
+[node name="pauseMenu" parent="." unique_id=1737344857 instance=ExtResource("4_b83qr")]

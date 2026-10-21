@@ -22,22 +22,37 @@ func _ready():
 	add_to_group("player")
 	#if not is_multiplayer_authority():
 		#hp_bar.hide()
-	if not multiplayer.is_server() and str(multiplayer.get_unique_id()) == name:
-		set_multiplayer_authority(multiplayer.get_unique_id())
+	if multiplayer.multiplayer_peer != null and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+		if not multiplayer.is_server() and str(multiplayer.get_unique_id()) == name:
+			set_multiplayer_authority(multiplayer.get_unique_id())
 
 #func _process(delta):
 	#if is_multiplayer_authority():
 		#hp_bar.value = playerHp
 		
 func _physics_process(delta: float) -> void:
+	if multiplayer.multiplayer_peer != null and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+		if not multiplayer.is_server() and str(multiplayer.get_unique_id()) == name:
+			if get_multiplayer_authority() != multiplayer.get_unique_id():
+				set_multiplayer_authority(multiplayer.get_unique_id())
+				print("Вернул себе управление!")
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+	if GameData.is_menu_open and is_multiplayer_authority():
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
+
+	if not is_multiplayer_authority():
+		move_and_slide()
+		return
+	
 	if attack_cooldown > 0:
 		attack_cooldown -= delta
 	if attack2_cooldown > 0:
 		attack2_cooldown -= delta
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 		
-	# 2. Состояния (работают для всех)
 	if is_hurt:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
@@ -83,8 +98,9 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = velocity.x < 0
 		
 	if is_multiplayer_authority():
-		if Engine.get_physics_frames() % 2 == 0:
-			sync_movement.rpc(global_position, velocity, sprite.flip_h)
+		if multiplayer.multiplayer_peer != null and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+			if Engine.get_physics_frames() % 2 == 0:
+				sync_movement.rpc(global_position, velocity, sprite.flip_h)
 
 	move_and_slide()
 	

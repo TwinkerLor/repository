@@ -22,6 +22,14 @@ func _ready():
 		#hp_bar.value = playerHp
 
 func _physics_process(delta: float) -> void:
+	if GameData.is_menu_open and is_multiplayer_authority():
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
+		
+	if multiplayer.multiplayer_peer != null and multiplayer.multiplayer_peer.get_connection_status() != MultiplayerPeer.CONNECTION_CONNECTED:
+		return
+	
 	if attack_cooldown > 0:
 		attack_cooldown -= delta
 	if not is_on_floor():
@@ -71,13 +79,13 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = velocity.x < 0
 		
 	if is_multiplayer_authority():
-		if Engine.get_physics_frames() % 2 == 0:
-			sync_movement.rpc(global_position, velocity, sprite.flip_h)
+		if multiplayer.multiplayer_peer != null and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+			if Engine.get_physics_frames() % 2 == 0:
+				sync_movement.rpc(global_position, velocity, sprite.flip_h)
 		
 	move_and_slide()
 	
 @rpc("any_peer", "call_local", "reliable")
-	
 func take_damage(amount: int):
 	if god_mode:
 		return
