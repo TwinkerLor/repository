@@ -1,5 +1,7 @@
 extends Control
 
+var settings_instance = null
+
 func _ready():
 	visible = false
 	
@@ -17,7 +19,11 @@ func _on_button_pressed() -> void:
 	hide()
 
 func _on_button_2_pressed() -> void:
-	pass # Replace with function body.
+	if settings_instance != null:
+		return
+	settings_instance = load("res://scenes/settings_menu.tscn").instantiate()
+	get_tree().current_scene.add_child(settings_instance)
+	settings_instance.tree_exited.connect(func(): settings_instance = null)
 
 func _on_button_3_pressed() -> void:
 	if multiplayer.multiplayer_peer != null:

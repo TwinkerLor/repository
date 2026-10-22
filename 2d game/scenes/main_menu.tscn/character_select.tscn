@@ -53,6 +53,14 @@ theme_override_font_sizes/font_size = 48
 text = "Knight"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/knight/Label" unique_id=1671020]
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 0
+offset_top = 151.0
+offset_right = 350.0
+offset_bottom = 551.0
+color = Color(0.1749846, 0.17498463, 0.1749846, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/knight" unique_id=11495222]
 position = Vector2(175, 324.75)
 scale = Vector2(2.7187498, 5.601562)
@@ -75,6 +83,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Wizard"
 horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/wizard/Label" unique_id=1548666490]
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 0
+offset_top = 151.0
+offset_right = 350.0
+offset_bottom = 551.0
+color = Color(0.1749846, 0.17498463, 0.1749846, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/wizard" unique_id=590992297]
 position = Vector2(173.75, 396.5)

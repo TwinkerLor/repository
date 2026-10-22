@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bn0gln0ueg7jv"]
+
+[ext_resource type="Script" uid="uid://w1d5swahqla6" path="res://scripts/ui/settings_menu.gd" id="1_05p07"]
+
+[node name="settingsMenu" type="Control" unique_id=403034512]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05p07")
+
+[node name="Background" type="ColorRect" parent="." unique_id=265611364]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17254902, 0.24313726, 0.3137255, 0.60784316)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1614500414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1385309939]
+layout_mode = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1706088837]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=83590229]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Audio" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=332006204]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Audio"
+
+[node name="Video" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=652547410]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Video"
+
+[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=656197368]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="RightPanel" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=506831752]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioPanel" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel" unique_id=1054402232]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/AudioPanel" unique_id=1474334584]
+custom_minimum_size = Vector2(25, 0)
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/AudioPanel/HSlider" unique_id=1090603214]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 0
+offset_left = -77.0
+offset_top = -4.0
+offset_right = -18.0
+offset_bottom = 19.0
+text = "Volume"
+
+[node name="VideoPanel" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel" unique_id=1947890715]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/HBoxContainer/RightPanel/VideoPanel" unique_id=856452962]
+custom_minimum_size = Vector2(50, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+text = "Full Screen"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/Audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/Video" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/RightPanel/AudioPanel/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/RightPanel/VideoPanel/CheckButton" to="." method="_on_check_button_toggled"]
